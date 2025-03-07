@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class FirePower : Power
 {
-    protected override void UsePower(InputAction.CallbackContext callbackContext)
+    public override void Cast()
     {
-        throw new NotImplementedException();
+        Debug.Log("Fire Power used!");
     }
 }

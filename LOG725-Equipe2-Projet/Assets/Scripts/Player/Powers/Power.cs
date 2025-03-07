@@ -4,30 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public abstract class Power : MonoBehaviour
 {
-    [SerializeField]
-    public InputActionReference PowerInput;
 
-    [SerializeField]
-    public ushort Charges { get; set; } = 0;
+    [SerializeField, Min(0)]
+    private int charges;
 
-    private Action<InputAction.CallbackContext> PowerCallback;
-
-    void Awake()
+    
+    public int Charges
     {
-        PowerCallback = (callbackContext) => UsePower(callbackContext);
+        get { return charges; }
+        //We clamp the value to 0.
+        set { charges = Math.Max(value, 0); }
     }
 
-    private void OnEnable()
-    {
-        PowerInput.action.performed += PowerCallback;
-    }
-
-    private void OnDisable()
-    {
-        PowerInput.action.performed -= PowerCallback;
-    }
-
-    protected abstract void UsePower(InputAction.CallbackContext callbackContext);
+    public abstract void Cast();
 }

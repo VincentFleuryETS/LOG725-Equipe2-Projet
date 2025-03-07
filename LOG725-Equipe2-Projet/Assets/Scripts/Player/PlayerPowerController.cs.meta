@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 09eee53c5d1bb3646a9ea2961799f682
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - AirPowerInput: {fileID: -7138333797617075900, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
+  - WaterPowerInput: {fileID: 466472414593233658, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
+  - EarthPowerInput: {fileID: -1983847616431677897, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
+  - FirePowerInput: {fileID: -4493232923873416529, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
