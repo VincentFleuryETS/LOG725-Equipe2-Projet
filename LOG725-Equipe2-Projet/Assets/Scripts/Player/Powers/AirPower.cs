@@ -8,8 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AirPower : Power
 {
-    [SerializeField]
-    public Rigidbody2D PlayerRigidbody;
+    private Rigidbody2D PlayerRigidbody;
 
     void Awake()
     {
