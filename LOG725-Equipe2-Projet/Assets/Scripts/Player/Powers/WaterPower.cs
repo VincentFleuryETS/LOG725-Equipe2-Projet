@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class WaterPower : Power
 {
-    public override void Cast()
+    public override void Cast(Vector2 direction)
     {
         Debug.Log("Water Power used!");
     }

@@ -15,21 +15,25 @@ public enum PowerType
 
 public class PlayerPowerController : MonoBehaviour
 {
+    [Header("     ----- Inputs -----")]
     [SerializeField] private InputActionReference AirPowerInput;
     [SerializeField] private InputActionReference WaterPowerInput;
     [SerializeField] private InputActionReference EarthPowerInput;
     [SerializeField] private InputActionReference FirePowerInput;
+    [SerializeField] private InputActionReference MovementInput;
 
     private Action<InputAction.CallbackContext> AirPowerCallback;
     private Action<InputAction.CallbackContext> WaterPowerCallback;
     private Action<InputAction.CallbackContext> EarthPowerCallback;
     private Action<InputAction.CallbackContext> FirePowerCallback;
 
+    [Header("----- Powers -----")]
     public AirPower AirPower;
     public WaterPower WaterPower;
     public EarthPower EarthPower;
     public FirePower FirePower;
 
+    [Header("----- Events -----")]
     public UnityEvent PowersUpdated;
 
 
@@ -77,7 +81,7 @@ public class PlayerPowerController : MonoBehaviour
 
     private void UsePower(PowerType type, InputAction.CallbackContext callbackContext)
     {
-        GetPowerByType(type).Cast();
+        GetPowerByType(type).Cast(MovementInput.action.ReadValue<Vector2>());
         PowersUpdated.Invoke();
     }
 

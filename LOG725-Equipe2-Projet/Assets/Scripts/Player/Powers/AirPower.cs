@@ -5,18 +5,33 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Air Power requires the player to have a RigidBody2D to apply the Dash.
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerMovementController))]
 public class AirPower : Power
 {
-    private Rigidbody2D PlayerRigidbody;
+    private PlayerMovementController playerMovementController;
+    public float AirDashForce = 10.0f;
 
     void Awake()
     {
-        PlayerRigidbody = GetComponent<Rigidbody2D>();
+        playerMovementController = GetComponent<PlayerMovementController>();
     }
 
-    public override void Cast()
+    public override void Cast(Vector2 direction)
     {
-        Debug.Log("Air Power used!");
+        if(Charges > 0)
+        {
+            Debug.Log("Air Power used!");
+            //If the direction is basically zero, use the direction the Player is facing instead.
+            if(direction.x < 0.1f && direction.x > -0.1f && direction.y < 0.1f && direction.y > -0.1f)
+            {
+                playerMovementController.AddForce(playerMovementController.GetFacingDirection() * AirDashForce, ForceMode2D.Impulse, true);
+            }
+            else
+            {
+                playerMovementController.AddForce(direction * AirDashForce, ForceMode2D.Impulse, true);
+            }
+            Charges--;
+        }
+        
     }
 }

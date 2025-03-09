@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class FirePower : Power
 {
-    public override void Cast()
+    public override void Cast(Vector2 direction)
     {
         Debug.Log("Fire Power used!");
     }

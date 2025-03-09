@@ -87,7 +87,7 @@ MonoBehaviour:
   JumpInput: {fileID: 7427576269374695363, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   JumpStrength: 20
   WalkAcceleration: 30
-  MaxWalkSpeed: 15
+  MaxWalkSpeed: 12
 --- !u!114 &6116191757065425935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   WaterPowerInput: {fileID: 466472414593233658, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   EarthPowerInput: {fileID: -1983847616431677897, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   FirePowerInput: {fileID: -4493232923873416529, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
+  MovementInput: {fileID: 5386844452404537924, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   AirPower: {fileID: 9113329397140873568}
   WaterPower: {fileID: 78390516727557379}
   EarthPower: {fileID: 4712832582992137966}
@@ -123,7 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d67a14ad24c48458955130adbc123e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charges: 0
+  charges: 5
+  AirDashForce: 20
 --- !u!114 &78390516727557379
 MonoBehaviour:
   m_ObjectHideFlags: 0

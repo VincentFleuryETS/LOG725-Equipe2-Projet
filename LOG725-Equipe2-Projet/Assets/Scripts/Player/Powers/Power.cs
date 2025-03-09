@@ -19,5 +19,5 @@ public abstract class Power : MonoBehaviour
         set { charges = Math.Max(value, 0); }
     }
 
-    public abstract void Cast();
+    public abstract void Cast(Vector2 direction);
 }
