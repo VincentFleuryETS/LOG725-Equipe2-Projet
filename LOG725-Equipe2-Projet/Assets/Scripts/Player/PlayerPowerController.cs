@@ -5,14 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public enum PowerType
-{
-    Air,
-    Water,
-    Earth,
-    Fire
-}
-
 public class PlayerPowerController : MonoBehaviour
 {
     [Header("     ----- Inputs -----")]
@@ -95,5 +87,13 @@ public class PlayerPowerController : MonoBehaviour
     {
         GetPowerByType(type).Charges = amount;
         PowersUpdated.Invoke();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out IPickupable triggerable))
+        {
+            triggerable.OnPickup(gameObject);
+        }
     }
 }
