@@ -23,11 +23,12 @@ public class PlayerMovementController : MonoBehaviour
     private bool facingRight = true;
     private Vector2 _movement = Vector2.zero;
     private bool isClimbing;
+    private bool isDashing; // Ajouté pour gérer l'état du dash
 
     public Vector2 GetMoveDirection()
     {
         Vector2 input = MovementInput.action.ReadValue<Vector2>();
-        Debug.Log($"Input - X: {input.x}, Y: {input.y}"); // Vérifie les inputs
+        Debug.Log($"Input - X: {input.x}, Y: {input.y}");
         return input;
     }
 
@@ -58,9 +59,9 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector2 movementInput = GetMoveDirection();
 
-        // Mouvement horizontal
+        // Calcul du mouvement normal
         _movement.x = movementInput.x * WalkSpeed;
-        Debug.Log($"Movement Calculated - X: {_movement.x}, Y: {_movement.y}"); // Vérifie le calcul
+        Debug.Log($"Movement Calculated - X: {_movement.x}, Y: {_movement.y}");
 
         if (isClimbing)
         {
@@ -73,13 +74,12 @@ public class PlayerMovementController : MonoBehaviour
             _rigidbody.gravityScale = 1f;
         }
 
-        // Limiter la vitesse horizontale
-        if (Math.Abs(_rigidbody.velocity.x) > MaxWalkSpeed)
+        // Limiter la vitesse horizontale sauf pendant le dash
+        if (!isDashing && Math.Abs(_rigidbody.velocity.x) > MaxWalkSpeed)
         {
             _movement.x = 0f;
         }
 
-        // Flip
         if (!isClimbing && movementInput.x > 0 && !facingRight)
         {
             Flip();
@@ -93,7 +93,7 @@ public class PlayerMovementController : MonoBehaviour
     private bool IsGrounded()
     {
         bool grounded = Physics2D.CircleCast(transform.position, _collider.size.y / 2, Vector2.down, 1f);
-        Debug.Log($"Is Grounded: {grounded}"); // Vérifie l'état au sol
+        Debug.Log($"Is Grounded: {grounded}");
         return grounded;
     }
 
@@ -133,15 +133,29 @@ public class PlayerMovementController : MonoBehaviour
             _rigidbody.velocity = Vector2.zero;
         }
         _rigidbody.AddForce(force, forceMode);
+        if (forceMode == ForceMode2D.Impulse && force.magnitude > 5f) // Seuil pour détecter un dash
+        {
+            isDashing = true;
+            Invoke(nameof(ResetDash), 0.2f); // Réinitialise après 0.2s
+        }
+    }
+
+    private void ResetDash()
+    {
+        isDashing = false;
+        Debug.Log("Dash finished");
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector2(
-            Mathf.Clamp(_movement.x, -MaxWalkSpeed, MaxWalkSpeed),
-            isClimbing ? _movement.y : _rigidbody.velocity.y
-        );
-        Debug.Log($"Velocity Applied - X: {_rigidbody.velocity.x}, Y: {_rigidbody.velocity.y}"); // Vérifie la vélocité
+        if (!isDashing) // N'applique le mouvement normal que si pas en dash
+        {
+            _rigidbody.velocity = new Vector2(
+                Mathf.Clamp(_movement.x, -MaxWalkSpeed, MaxWalkSpeed),
+                isClimbing ? _movement.y : _rigidbody.velocity.y
+            );
+        }
+        Debug.Log($"Velocity Applied - X: {_rigidbody.velocity.x}, Y: {_rigidbody.velocity.y}, IsDashing: {isDashing}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
