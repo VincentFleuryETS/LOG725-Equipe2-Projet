@@ -11,9 +11,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private InputActionReference JumpInput;
 
     [Header("----- Movement Parameters -----")]
-    public float JumpStrength = 10.0f;
-    public float WalkSpeed = 100f;
-    public float MaxWalkSpeed = 100f;
+    public float JumpStrength = 12.0f;
+    public float WalkSpeed = 9;
+    public float DefaultGravity = 2.0f;
 
     [Header("----- Ladder Parameters -----")]
     [SerializeField] private float climbSpeed = 10f;
@@ -22,13 +22,12 @@ public class PlayerMovementController : MonoBehaviour
     private CapsuleCollider2D _collider;
     private bool facingRight = true;
     private Vector2 _movement = Vector2.zero;
-    private bool isClimbing;
-    private bool isDashing; // Ajouté pour gérer l'état du dash
+    private bool isClimbing = false;
+    private bool velocityIsLocked = false;
 
     public Vector2 GetMoveDirection()
     {
         Vector2 input = MovementInput.action.ReadValue<Vector2>();
-        Debug.Log($"Input - X: {input.x}, Y: {input.y}");
         return input;
     }
 
@@ -41,6 +40,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
+        _rigidbody.gravityScale = DefaultGravity;
     }
 
     private void OnEnable()
@@ -59,9 +59,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector2 movementInput = GetMoveDirection();
 
-        // Calcul du mouvement normal
         _movement.x = movementInput.x * WalkSpeed;
-        Debug.Log($"Movement Calculated - X: {_movement.x}, Y: {_movement.y}");
+
 
         if (isClimbing)
         {
@@ -70,15 +69,18 @@ public class PlayerMovementController : MonoBehaviour
         }
         else
         {
-            _movement.y = 0f;
-            _rigidbody.gravityScale = 1f;
+            //If not climbing or jumping, cut the vertical positive velocity.
+            if(JumpInput.action.ReadValue<float>() < 0.1f && _rigidbody.velocity.y > 0)
+            {
+                _movement.y = _rigidbody.velocity.y / 1.2f;
+            }
+            else
+            {
+                _movement.y = _rigidbody.velocity.y;
+            }
+            _rigidbody.gravityScale = DefaultGravity;
         }
 
-        // Limiter la vitesse horizontale sauf pendant le dash
-        if (!isDashing && Math.Abs(_rigidbody.velocity.x) > MaxWalkSpeed)
-        {
-            _movement.x = 0f;
-        }
 
         if (!isClimbing && movementInput.x > 0 && !facingRight)
         {
@@ -133,29 +135,36 @@ public class PlayerMovementController : MonoBehaviour
             _rigidbody.velocity = Vector2.zero;
         }
         _rigidbody.AddForce(force, forceMode);
-        if (forceMode == ForceMode2D.Impulse && force.magnitude > 5f) // Seuil pour détecter un dash
-        {
-            isDashing = true;
-            Invoke(nameof(ResetDash), 0.2f); // Réinitialise après 0.2s
-        }
     }
 
-    private void ResetDash()
+    /// <summary>
+    /// Lock the velocity of the entity to the value of <paramref name="velocity"/> for <paramref name="timeLocked"/> seconds.
+    /// </summary>
+    /// <param name="velocity"></param>
+    /// <param name="timeLocked"></param>
+    public void LockVelocity(Vector2 velocity, float timeLocked)
     {
-        isDashing = false;
-        Debug.Log("Dash finished");
+        velocityIsLocked = true;
+        _rigidbody.velocity = velocity;
+        _rigidbody.gravityScale = 0f;
+        Invoke(nameof(UnlockVelocity), timeLocked);
+    }
+
+    /// <summary>
+    /// Unlock the velocity of the entity.
+    /// </summary>
+    public void UnlockVelocity()
+    {
+        _rigidbody.gravityScale = DefaultGravity;
+        velocityIsLocked = false;
     }
 
     private void FixedUpdate()
     {
-        if (!isDashing) // N'applique le mouvement normal que si pas en dash
+        if (!velocityIsLocked) // N'applique le mouvement normal que si la vélocité n'est pas locked.
         {
-            _rigidbody.velocity = new Vector2(
-                Mathf.Clamp(_movement.x, -MaxWalkSpeed, MaxWalkSpeed),
-                isClimbing ? _movement.y : _rigidbody.velocity.y
-            );
+            _rigidbody.velocity = _movement;
         }
-        Debug.Log($"Velocity Applied - X: {_rigidbody.velocity.x}, Y: {_rigidbody.velocity.y}, IsDashing: {isDashing}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -9,7 +9,8 @@ using UnityEngine.InputSystem;
 public class AirPower : Power
 {
     private PlayerMovementController playerMovementController;
-    public float AirDashForce = 10.0f;
+    public float AirDashForce = 20.0f;
+    public float AirDashDuration = 0.2f;
 
     void Awake()
     {
@@ -24,11 +25,12 @@ public class AirPower : Power
             //If the direction is basically zero, use the direction the Player is facing instead.
             if(direction.x < 0.1f && direction.x > -0.1f && direction.y < 0.1f && direction.y > -0.1f)
             {
-                playerMovementController.AddForce(playerMovementController.GetFacingDirection() * AirDashForce, ForceMode2D.Impulse, true);
+                playerMovementController.LockVelocity(playerMovementController.GetFacingDirection() * AirDashForce, AirDashDuration);
             }
             else
             {
-                playerMovementController.AddForce(direction * AirDashForce, ForceMode2D.Impulse, true);
+                direction.Normalize();
+                playerMovementController.LockVelocity(direction * AirDashForce, AirDashDuration);
             }
             Charges--;
         }
