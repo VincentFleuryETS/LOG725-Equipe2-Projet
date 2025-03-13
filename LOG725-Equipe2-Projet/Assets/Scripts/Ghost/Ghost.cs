@@ -92,7 +92,7 @@ public class Ghost : MonoBehaviour
 
     private bool facingRight()
     {
-        return transform.localScale.x > 0;
+        return transform.localScale.x < 0;
     }
 
     private void Flip()
