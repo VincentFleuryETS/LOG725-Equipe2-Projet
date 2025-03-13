@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: c76cf1c29f458f842b74f9cc1b4c6a05
+guid: e2d589d4bf9794446b644c2417a704a6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - WaterProjectile: {fileID: 7858947230964374230, guid: 19fcfef6f1741c348bcca759be07a7ac, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

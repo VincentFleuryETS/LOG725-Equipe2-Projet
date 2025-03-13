@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -15,13 +16,13 @@ TagManager:
   - 
   - 
   - 
+  - Player
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Interactable
     uniqueID: 3962753329
+    locked: 0
+  - name: Projectile
+    uniqueID: 590640229
     locked: 0
   - name: Player
     uniqueID: 1490410201

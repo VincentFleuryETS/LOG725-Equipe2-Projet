@@ -1,17 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-
+[RequireComponent(typeof(PlayerMovementController))]
 public abstract class Power : MonoBehaviour
 {
 
     [SerializeField, Min(0)]
     private int charges;
 
-    
+    protected PlayerMovementController playerMovementController;
+
+    void Awake()
+    {
+        playerMovementController = GetComponent<PlayerMovementController>();
+    }
+
     public int Charges
     {
         get { return charges; }

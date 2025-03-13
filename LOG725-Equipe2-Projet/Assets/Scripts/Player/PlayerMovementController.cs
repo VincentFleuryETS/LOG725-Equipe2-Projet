@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerMovementController : MonoBehaviour
 {
-    [Header("----- Inputs -----")]
+    [Header("     ----- Inputs -----")]
     [SerializeField] private InputActionReference MovementInput;
     [SerializeField] private InputActionReference JumpInput;
 
@@ -157,6 +157,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         _rigidbody.gravityScale = DefaultGravity;
         velocityIsLocked = false;
+    }
+
+    public void IgnoreCollision(Collider2D otherCollider)
+    {
+        Physics2D.IgnoreCollision(_collider, otherCollider);
     }
 
     private void FixedUpdate()
