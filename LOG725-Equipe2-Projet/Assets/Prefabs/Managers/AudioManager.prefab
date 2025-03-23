@@ -50,10 +50,7 @@ MonoBehaviour:
   musicSource: {fileID: 8280124246158572019}
   SFXSource: {fileID: 4424862810348607445}
   UISource: {fileID: 6704822860749878306}
-  backgroundMusic: {fileID: 0}
-  shootSound: {fileID: 0}
-  collectAmmo: {fileID: 0}
-  winSound: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 7638e9d11dfb5244ea9e58848a2c6e80, type: 3}
 --- !u!1 &3077061660383239369
 GameObject:
   m_ObjectHideFlags: 0
