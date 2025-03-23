@@ -20,6 +20,6 @@ public class PowerProjectile : MonoBehaviour
 
     public void ActivateGravity()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 3.0f;
+        GetComponent<Rigidbody2D>().gravityScale = 5.0f;
     }
 }

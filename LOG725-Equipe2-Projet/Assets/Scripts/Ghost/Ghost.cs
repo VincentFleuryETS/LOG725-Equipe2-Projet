@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Collider2D))]
+[RequireComponent (typeof(Rigidbody2D))]
 public class Ghost : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -16,8 +18,14 @@ public class Ghost : MonoBehaviour
     private Vector3 startPosition;
     private float timeOffset;
 
+    private Collider2D _collider;
+    private Rigidbody2D _rigidbody;
+
     void Start()
     {
+        _collider = GetComponent<Collider2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+
         startPosition = transform.position;
         timeOffset = Random.Range(0f, 2f * Mathf.PI);
     }
@@ -41,6 +49,8 @@ public class Ghost : MonoBehaviour
 
         CheckPlayerDetection();
 
+        _rigidbody.velocity = Vector2.zero;
+
         if (isHostile)
         {
             ChasePlayer();
@@ -54,9 +64,9 @@ public class Ghost : MonoBehaviour
     private void CheckPlayerDetection()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        Debug.Log($"Distance to player: {distanceToPlayer}, Detection Radius: {detectionRadius}");
+        //Debug.Log($"Distance to player: {distanceToPlayer}, Detection Radius: {detectionRadius}");
         isHostile = distanceToPlayer <= detectionRadius;
-        Debug.Log($"Ghost State: {(isHostile ? "Hostile" : "Passive")}");
+        //Debug.Log($"Ghost State: {(isHostile ? "Hostile" : "Passive")}");
     }
 
     private void PassiveFloat()
@@ -72,13 +82,14 @@ public class Ghost : MonoBehaviour
             newPosition,
             passiveSpeed * Time.deltaTime
         );
+        
     }
 
     private void ChasePlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
         transform.position += direction * chaseSpeed * Time.deltaTime;
-        Debug.Log($"Chasing player! Direction: {direction}, New Position: {transform.position}");
+        //Debug.Log($"Chasing player! Direction: {direction}, New Position: {transform.position}");
 
         if (direction.x > 0 && !facingRight())
         {

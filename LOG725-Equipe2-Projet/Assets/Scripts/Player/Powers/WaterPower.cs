@@ -38,7 +38,7 @@ public class WaterPower : Power
             //We set it to not collide with the creator.
             playerMovementController.IgnoreCollision(projectile.GetComponent<Collider2D>());
             //Set gravity after a percentage of the lifespan.
-            projectile.Invoke(nameof(projectile.ActivateGravity), ProjectileLifespan * 0.6f);
+            projectile.Invoke(nameof(projectile.ActivateGravity), ProjectileLifespan * 0.2f);
             //Destroy the projectile after X seconds.
             Destroy(projectile.gameObject, ProjectileLifespan);
 

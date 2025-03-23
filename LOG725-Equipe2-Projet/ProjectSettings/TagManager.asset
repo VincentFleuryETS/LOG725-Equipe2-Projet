@@ -19,12 +19,12 @@ TagManager:
   - Player
   - 
   - 
-  - 
-  - 
+  - Monster
+  - Interactable
   - 
   - Projectile
   - 
-  - 
+  - Environment
   - 
   - 
   - 
