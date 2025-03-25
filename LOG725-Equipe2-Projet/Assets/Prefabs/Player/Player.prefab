@@ -19,9 +19,9 @@ GameObject:
   - component: {fileID: 8360485028202307014}
   - component: {fileID: 1350228558480289325}
   - component: {fileID: 2182483413867615608}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.38, y: -3.71, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4.335, y: 4.335, z: 4.335}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,9 +85,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementInput: {fileID: 5386844452404537924, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   JumpInput: {fileID: 7427576269374695363, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  JumpStrength: 20
-  WalkAcceleration: 30
-  MaxWalkSpeed: 12
+  JumpStrength: 12
+  WalkSpeed: 9
+  DefaultGravity: 2
+  climbSpeed: 6
 --- !u!114 &6116191757065425935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d67a14ad24c48458955130adbc123e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charges: 5
+  charges: 30
   AirDashForce: 20
+  AirDashDuration: 0.2
 --- !u!114 &78390516727557379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76cf1c29f458f842b74f9cc1b4c6a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charges: 0
+  charges: 30
+  WaterProjectile: {fileID: 7858947230964374230, guid: 19fcfef6f1741c348bcca759be07a7ac, type: 3}
+  ProjectileLifespan: 1.33
+  ProjectileSpeed: 15
 --- !u!114 &4712832582992137966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f022330eca40b04cacb9108c4076de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charges: 0
+  charges: 30
+  PowerDuration: 5
+  PowerColor: {r: 0.5764706, g: 0.30588236, b: 0, a: 1}
 --- !u!114 &718498033319844910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb846cd1c23e064498b7caeac5806f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charges: 0
+  charges: 30
 --- !u!50 &8360485028202307014
 Rigidbody2D:
   serializedVersion: 4
@@ -178,10 +185,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.8
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
-  m_Material: {fileID: 0}
+  m_GravityScale: 2
+  m_Material: {fileID: 6200000, guid: 9d99b03ac72978a418725831d25ee846, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -231,7 +238,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1490410201
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

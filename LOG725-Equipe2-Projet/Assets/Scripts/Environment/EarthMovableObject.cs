@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent (typeof(CapsuleCollider2D))]
+[RequireComponent (typeof(Collider2D))]
 public class EarthMovableObject : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
@@ -12,24 +13,30 @@ public class EarthMovableObject : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.isKinematic = true;
+        //_rigidbody.isKinematic = true;
+        _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Math.Abs(_rigidbody.velocity.y) > 0.01)
+        {
+            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        }
     }
 
     public void StartMoving()
     {
-        _rigidbody.isKinematic = false;
+        //_rigidbody.isKinematic = false;
+        _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void StopMoving()
     {
-        _rigidbody.isKinematic = true;
-        _rigidbody.velocity = Vector3.zero;
+        //_rigidbody.isKinematic = true;
+        _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,13 +49,5 @@ public class EarthMovableObject : MonoBehaviour
                 earthPower.AddMovableObject(this);
             }
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        /*if (collision.gameObject.TryGetComponent(out EarthPower earthPower))
-        {
-            earthPower.RemoveMovableObject(this);
-        }*/
     }
 }
