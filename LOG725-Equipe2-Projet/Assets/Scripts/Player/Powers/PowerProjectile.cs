@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -8,13 +6,12 @@ public class PowerProjectile : MonoBehaviour
 {
     public PowerType powerType;
     
+    [SerializeField]
+    private AudioClip CollisionSound;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IPowerTriggerable triggerable))
-        {
-            triggerable.OnPowerTriggered(gameObject);
-        }
+        AudioManager.GetSingleton().PlaySFX(CollisionSound);
         Destroy(gameObject);
     }
 

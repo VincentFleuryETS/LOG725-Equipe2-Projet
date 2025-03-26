@@ -24,6 +24,10 @@ public class AudioManager : MonoBehaviour
 
     private static AudioManager instance;
 
+    public static AudioManager GetSingleton()
+    {
+        return instance;
+    }
 
     private void Awake()
     {

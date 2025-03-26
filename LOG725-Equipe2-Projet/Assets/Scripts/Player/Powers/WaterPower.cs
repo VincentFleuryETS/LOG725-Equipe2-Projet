@@ -16,6 +16,7 @@ public class WaterPower : Power
         if (Charges > 0)
         {
             Debug.Log("Water Power used!");
+            AudioManager.GetSingleton().PlaySFX(CastSound);
             Vector2 tempDirection;
             //If the direction is basically zero, use the direction the Player is facing instead.
             if (direction.x < 0.1f && direction.x > -0.1f && direction.y < 0.1f && direction.y > -0.1f)

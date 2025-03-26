@@ -8,6 +8,9 @@ public abstract class Power : MonoBehaviour
     [SerializeField, Min(0)]
     private int charges;
 
+    [SerializeField]
+    protected AudioClip CastSound;
+
     protected PlayerMovementController playerMovementController;
 
     void Awake()

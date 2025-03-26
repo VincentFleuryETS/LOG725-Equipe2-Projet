@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - CastSound: {fileID: 8300000, guid: 1b6736e6a47fd1740a3a2328fce1dae6, type: 3}
   - WaterProjectile: {fileID: 7858947230964374230, guid: 19fcfef6f1741c348bcca759be07a7ac, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

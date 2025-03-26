@@ -102,6 +102,8 @@ MonoBehaviour:
   CorruptedColor: {r: 1, g: 0.07058824, b: 0.5058824, a: 1}
   PurifiedColor: {r: 1, g: 1, b: 1, a: 1}
   AbsorbedSpiritColor: {r: 0, g: 0.9999995, b: 1, a: 1}
+  PurifySound: {fileID: 8300000, guid: 9c3c85488fd48a4409feefb2cc592631, type: 3}
+  AbsorbSound: {fileID: 8300000, guid: 102f3b801d094bc40aea7689a233151d, type: 3}
 --- !u!61 &3256751899361448814
 BoxCollider2D:
   m_ObjectHideFlags: 0

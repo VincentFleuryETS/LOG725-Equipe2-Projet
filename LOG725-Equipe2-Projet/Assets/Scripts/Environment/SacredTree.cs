@@ -15,12 +15,21 @@ public class SacredTree : MonoBehaviour
 {
     [SerializeField]
     private TreeState CurrentState = TreeState.Corrupted;
+    [Header("----- Color Settings -----")]
     [SerializeField]
     private Color CorruptedColor;
     [SerializeField]
     private Color PurifiedColor;
     [SerializeField]
     private Color AbsorbedSpiritColor;
+
+    [Header("----- Audio -----")]
+    [SerializeField]
+    private AudioClip PurifySound;
+    [SerializeField]
+    private AudioClip AbsorbSound;
+
+
 
     private SpriteRenderer _renderer;
 
@@ -42,6 +51,8 @@ public class SacredTree : MonoBehaviour
                 {
                     if(projectile.powerType == PowerType.Water)
                     {
+                        Debug.Log("Sacred Tree purified.");
+                        AudioManager.GetSingleton().PlaySFX(PurifySound);
                         Destroy(projectile.gameObject);
                         ChangeState(TreeState.Purified);
                     }
@@ -52,6 +63,7 @@ public class SacredTree : MonoBehaviour
                 if (collision.TryGetComponent(out Ghost ghost))
                 {
                     Debug.Log("Sacred Tree absorbed Ghost.");
+                    AudioManager.GetSingleton().PlaySFX(AbsorbSound);
                     Destroy(ghost.gameObject);
                     ChangeState(TreeState.AbsorbedSpirit);
                 }

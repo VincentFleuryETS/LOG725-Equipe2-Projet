@@ -12,8 +12,9 @@ public class AirPower : Power
         if(Charges > 0)
         {
             Debug.Log("Air Power used!");
+            AudioManager.GetSingleton().PlaySFX(CastSound);
             //If the direction is basically zero, use the direction the Player is facing instead.
-            if(direction.x < 0.1f && direction.x > -0.1f && direction.y < 0.1f && direction.y > -0.1f)
+            if (direction.x < 0.1f && direction.x > -0.1f && direction.y < 0.1f && direction.y > -0.1f)
             {
                 playerMovementController.LockVelocity(playerMovementController.GetFacingDirection() * AirDashForce, AirDashDuration);
             }
