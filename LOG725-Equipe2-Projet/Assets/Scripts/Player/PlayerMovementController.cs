@@ -10,6 +10,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private InputActionReference MovementInput;
     [SerializeField] private InputActionReference JumpInput;
 
+    private Action<InputAction.CallbackContext> JumpPerformedCallback;
+    private Action<InputAction.CallbackContext> JumpCanceledCallback;
+
     [Header("----- Movement Parameters -----")]
     public float JumpStrength = 12.0f;
     public float WalkSpeed = 9;
@@ -25,34 +28,52 @@ public class PlayerMovementController : MonoBehaviour
     private bool isClimbing = false;
     private bool velocityIsLocked = false;
 
-    public Vector2 GetMoveDirection()
-    {
-        Vector2 input = MovementInput.action.ReadValue<Vector2>();
-        return input;
-    }
-
-    public Vector2 GetFacingDirection()
-    {
-        return facingRight ? transform.right : -transform.right;
-    }
-
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
         _rigidbody.gravityScale = DefaultGravity;
+
+        JumpPerformedCallback = (callbackContext) => OnJumpPressed();
+        JumpCanceledCallback = (callbackContext) => OnJumpPressed();
     }
 
     private void OnEnable()
     {
-        JumpInput.action.performed += ctx => OnJumpPressed();
-        JumpInput.action.canceled += ctx => OnJumpReleased();
+        JumpInput.action.performed += JumpPerformedCallback;
+        JumpInput.action.canceled += JumpCanceledCallback;
     }
 
     private void OnDisable()
     {
-        JumpInput.action.performed -= ctx => OnJumpPressed();
-        JumpInput.action.canceled -= ctx => OnJumpReleased();
+        JumpInput.action.performed -= JumpPerformedCallback;
+        JumpInput.action.canceled -= JumpCanceledCallback;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!velocityIsLocked) // N'applique le mouvement normal que si la vélocité n'est pas locked.
+        {
+            _rigidbody.velocity = _movement;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            isClimbing = true;
+            Debug.Log("Entered ladder");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+            Debug.Log("Exited ladder");
+        }
     }
 
     void Update()
@@ -70,7 +91,7 @@ public class PlayerMovementController : MonoBehaviour
         else
         {
             //If not climbing or jumping, cut the vertical positive velocity.
-            if(JumpInput.action.ReadValue<float>() < 0.1f && _rigidbody.velocity.y > 0)
+            if (JumpInput.action.ReadValue<float>() < 0.1f && _rigidbody.velocity.y > 0)
             {
                 _movement.y = _rigidbody.velocity.y / 1.2f;
             }
@@ -92,10 +113,21 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
+    public Vector2 GetMoveDirection()
+    {
+        Vector2 input = MovementInput.action.ReadValue<Vector2>();
+        return input;
+    }
+
+    public Vector2 GetFacingDirection()
+    {
+        return facingRight ? transform.right : -transform.right;
+    }
+
     private bool IsGrounded()
     {
         bool grounded = Physics2D.CircleCast(transform.position, _collider.size.y / 2, Vector2.down, 1f);
-        Debug.Log($"Is Grounded: {grounded}");
+        //Debug.Log($"Is Grounded: {grounded}");
         return grounded;
     }
 
@@ -155,8 +187,11 @@ public class PlayerMovementController : MonoBehaviour
     /// </summary>
     public void UnlockVelocity()
     {
-        _rigidbody.gravityScale = DefaultGravity;
-        velocityIsLocked = false;
+        if(_rigidbody != null)
+        {
+            _rigidbody.gravityScale = DefaultGravity;
+            velocityIsLocked = false;
+        }
     }
 
     public void IgnoreCollision(Collider2D otherCollider)
@@ -164,29 +199,5 @@ public class PlayerMovementController : MonoBehaviour
         Physics2D.IgnoreCollision(_collider, otherCollider);
     }
 
-    private void FixedUpdate()
-    {
-        if (!velocityIsLocked) // N'applique le mouvement normal que si la vélocité n'est pas locked.
-        {
-            _rigidbody.velocity = _movement;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ladder"))
-        {
-            isClimbing = true;
-            Debug.Log("Entered ladder");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ladder"))
-        {
-            isClimbing = false;
-            Debug.Log("Exited ladder");
-        }
-    }
+    
 }

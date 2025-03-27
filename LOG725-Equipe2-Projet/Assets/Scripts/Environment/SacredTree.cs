@@ -43,13 +43,22 @@ public class SacredTree : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        CheckCollision(collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        CheckCollision(collision);
+    }
+
+    private void CheckCollision(Collider2D collision)
+    {
         switch (CurrentState)
         {
             case TreeState.Corrupted:
                 if (collision.TryGetComponent(out PowerProjectile projectile))
                 {
-                    if(projectile.powerType == PowerType.Water)
+                    if (projectile.powerType == PowerType.Water)
                     {
                         Debug.Log("Sacred Tree purified.");
                         AudioManager.GetSingleton().PlaySFX(PurifySound);
@@ -59,7 +68,7 @@ public class SacredTree : MonoBehaviour
                 }
                 break;
             case TreeState.Purified:
-                
+
                 if (collision.TryGetComponent(out Ghost ghost))
                 {
                     Debug.Log("Sacred Tree absorbed Ghost.");

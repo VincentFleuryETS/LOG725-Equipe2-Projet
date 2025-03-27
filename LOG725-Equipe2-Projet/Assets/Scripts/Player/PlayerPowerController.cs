@@ -43,7 +43,6 @@ public class PlayerPowerController : MonoBehaviour
         WaterPowerInput.action.performed += WaterPowerCallback;
         EarthPowerInput.action.performed += EarthPowerCallback;
         FirePowerInput.action.performed += FirePowerCallback;
-
     }
 
     private void OnDisable()

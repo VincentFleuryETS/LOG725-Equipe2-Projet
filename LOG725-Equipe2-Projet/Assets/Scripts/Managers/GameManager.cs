@@ -30,10 +30,14 @@ public class GameManager : MonoBehaviour
         ResumeGame();
     }
 
+    public static void RestartCurrentLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public static void LevelWon()
     {
         PauseGame();
-        GameObject.Find("LevelUI").transform.Find("WinPanel").gameObject.SetActive(true);
     }
 
     public static void CloseGame()
