@@ -57,7 +57,7 @@ public class EarthPower : Power
 
         if (Charges > 0 && !IsPowerActive())
         {
-            Debug.Log("Earth Power used!");
+            //Debug.Log("Earth Power used!");
             AudioManager.GetSingleton().PlaySFX(CastSound);
             _powerActive = true;
             _spriteRenderer.color = PowerColor;

@@ -7,18 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerPowerController : MonoBehaviour
 {
-    [Header("     ----- Inputs -----")]
-    [SerializeField] private InputActionReference AirPowerInput;
-    [SerializeField] private InputActionReference WaterPowerInput;
-    [SerializeField] private InputActionReference EarthPowerInput;
-    [SerializeField] private InputActionReference FirePowerInput;
-    [SerializeField] private InputActionReference MovementInput;
-
-    private Action<InputAction.CallbackContext> AirPowerCallback;
-    private Action<InputAction.CallbackContext> WaterPowerCallback;
-    private Action<InputAction.CallbackContext> EarthPowerCallback;
-    private Action<InputAction.CallbackContext> FirePowerCallback;
-
     [Header("----- Powers -----")]
     public AirPower AirPower;
     public WaterPower WaterPower;
@@ -28,30 +16,6 @@ public class PlayerPowerController : MonoBehaviour
     [Header("----- Events -----")]
     public UnityEvent PowersUpdated;
 
-
-    void Awake()
-    {
-        AirPowerCallback = (callbackContext)    => UsePower(PowerType.Air, callbackContext);
-        WaterPowerCallback = (callbackContext)  => UsePower(PowerType.Water, callbackContext);
-        EarthPowerCallback = (callbackContext)  => UsePower(PowerType.Earth, callbackContext);
-        FirePowerCallback = (callbackContext)   => UsePower(PowerType.Fire, callbackContext);
-    }
-
-    private void OnEnable()
-    {
-        AirPowerInput.action.performed += AirPowerCallback;
-        WaterPowerInput.action.performed += WaterPowerCallback;
-        EarthPowerInput.action.performed += EarthPowerCallback;
-        FirePowerInput.action.performed += FirePowerCallback;
-    }
-
-    private void OnDisable()
-    {
-        AirPowerInput.action.performed -= AirPowerCallback;
-        WaterPowerInput.action.performed -= WaterPowerCallback;
-        EarthPowerInput.action.performed -= EarthPowerCallback;
-        FirePowerInput.action.performed -= FirePowerCallback;
-    }
 
     private Power GetPowerByType(PowerType type)
     {
@@ -70,9 +34,9 @@ public class PlayerPowerController : MonoBehaviour
         }
     }
 
-    private void UsePower(PowerType type, InputAction.CallbackContext callbackContext)
+    public void UsePower(PowerType type, Vector2 castDirection)
     {
-        GetPowerByType(type).Cast(MovementInput.action.ReadValue<Vector2>());
+        GetPowerByType(type).Cast(castDirection);
         PowersUpdated.Invoke();
     }
 

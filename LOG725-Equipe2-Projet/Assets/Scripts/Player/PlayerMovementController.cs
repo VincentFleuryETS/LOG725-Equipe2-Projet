@@ -6,13 +6,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerMovementController : MonoBehaviour
 {
-    [Header("     ----- Inputs -----")]
-    [SerializeField] private InputActionReference MovementInput;
-    [SerializeField] private InputActionReference JumpInput;
-
-    private Action<InputAction.CallbackContext> JumpPerformedCallback;
-    private Action<InputAction.CallbackContext> JumpCanceledCallback;
-
     [Header("----- Movement Parameters -----")]
     public float JumpStrength = 12.0f;
     public float WalkSpeed = 9;
@@ -24,30 +17,18 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private CapsuleCollider2D _collider;
     private bool facingRight = true;
+    private Vector2 _moveInput = Vector2.zero;
     private Vector2 _movement = Vector2.zero;
+    private bool isJumping = false;
     private bool isClimbing = false;
     private bool velocityIsLocked = false;
+    
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
         _rigidbody.gravityScale = DefaultGravity;
-
-        JumpPerformedCallback = (callbackContext) => OnJumpPressed();
-        JumpCanceledCallback = (callbackContext) => OnJumpReleased();
-    }
-
-    private void OnEnable()
-    {
-        JumpInput.action.performed += JumpPerformedCallback;
-        JumpInput.action.canceled += JumpCanceledCallback;
-    }
-
-    private void OnDisable()
-    {
-        JumpInput.action.performed -= JumpPerformedCallback;
-        JumpInput.action.canceled -= JumpCanceledCallback;
     }
 
     private void FixedUpdate()
@@ -63,7 +44,7 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isClimbing = true;
-            Debug.Log("Entered ladder");
+            //Debug.Log("Entered ladder");
         }
     }
 
@@ -72,26 +53,25 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isClimbing = false;
-            Debug.Log("Exited ladder");
+            //Debug.Log("Exited ladder");
         }
     }
 
     void Update()
     {
-        Vector2 movementInput = GetMoveDirection();
 
-        _movement.x = movementInput.x * WalkSpeed;
+        _movement.x = _moveInput.x * WalkSpeed;
 
 
         if (isClimbing)
         {
-            _movement.y = movementInput.y * climbSpeed;
+            _movement.y = _moveInput.y * climbSpeed;
             _rigidbody.gravityScale = 0f;
         }
         else
         {
             //If not climbing or jumping, cut the vertical positive velocity.
-            if (JumpInput.action.ReadValue<float>() < 0.1f && _rigidbody.velocity.y > 0)
+            if (!isJumping && _rigidbody.velocity.y > 0)
             {
                 _movement.y = _rigidbody.velocity.y / 1.2f;
             }
@@ -103,25 +83,14 @@ public class PlayerMovementController : MonoBehaviour
         }
 
 
-        if (!isClimbing && movementInput.x > 0 && !facingRight)
+        if (!isClimbing && _moveInput.x > 0 && !facingRight)
         {
             Flip();
         }
-        else if (!isClimbing && movementInput.x < 0 && facingRight)
+        else if (!isClimbing && _moveInput.x < 0 && facingRight)
         {
             Flip();
         }
-    }
-
-    public Vector2 GetMoveDirection()
-    {
-        Vector2 input = MovementInput.action.ReadValue<Vector2>();
-        return input;
-    }
-
-    public Vector2 GetFacingDirection()
-    {
-        return facingRight ? transform.right : -transform.right;
     }
 
     private bool IsGrounded()
@@ -139,21 +108,38 @@ public class PlayerMovementController : MonoBehaviour
         facingRight = !facingRight;
     }
 
-    private void OnJumpPressed()
+    public Vector2 GetMoveInput()
+    {
+        return _moveInput;
+    }
+
+    public void SetMoveInput(Vector2 direction)
+    {
+        _moveInput = direction;
+    }
+
+    public Vector2 GetFacingDirection()
+    {
+        return facingRight ? transform.right : -transform.right;
+    }
+
+    public void StartJump()
     {
         if (IsGrounded() && !isClimbing)
         {
             AddForce(Vector2.up * JumpStrength, ForceMode2D.Impulse, false);
+            isJumping = true;
         }
-        else if (isClimbing)
-        {
-            isClimbing = false;
+        else if (isClimbing) {
             AddForce(Vector2.up * JumpStrength, ForceMode2D.Impulse, false);
+            isClimbing = false;
+            isJumping = true;
         }
     }
 
-    private void OnJumpReleased()
+    public void EndJump()
     {
+        isJumping = false;
         if (_rigidbody.velocity.y > 0 && !isClimbing)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2);

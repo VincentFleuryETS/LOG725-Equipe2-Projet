@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4574060631075457309}
-  - component: {fileID: 3810334140861736008}
+  - component: {fileID: 7699030490187611792}
   - component: {fileID: 6923021092114754814}
   - component: {fileID: 6116191757065425935}
   - component: {fileID: 9113329397140873568}
@@ -41,7 +41,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3810334140861736008
+--- !u!114 &7699030490187611792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,27 +50,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3353030954531524549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: a6efca14b751af7429b9adefaa4cf6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &6923021092114754814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,8 +65,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3146c62ae09cce43aa0ae0ae8f3791a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementInput: {fileID: 5386844452404537924, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  JumpInput: {fileID: 7427576269374695363, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   JumpStrength: 12
   WalkSpeed: 9
   DefaultGravity: 2
@@ -101,11 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09eee53c5d1bb3646a9ea2961799f682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AirPowerInput: {fileID: -7138333797617075900, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  WaterPowerInput: {fileID: 466472414593233658, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  EarthPowerInput: {fileID: -1983847616431677897, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  FirePowerInput: {fileID: -4493232923873416529, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  MovementInput: {fileID: 5386844452404537924, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
   AirPower: {fileID: 9113329397140873568}
   WaterPower: {fileID: 78390516727557379}
   EarthPower: {fileID: 4712832582992137966}
@@ -126,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charges: 30
+  CastSound: {fileID: 8300000, guid: 04064470282bf8946bceaf551a70864a, type: 3}
   AirDashForce: 20
   AirDashDuration: 0.2
 --- !u!114 &78390516727557379
@@ -141,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charges: 30
+  CastSound: {fileID: 8300000, guid: 1b6736e6a47fd1740a3a2328fce1dae6, type: 3}
   WaterProjectile: {fileID: 7858947230964374230, guid: 19fcfef6f1741c348bcca759be07a7ac, type: 3}
   ProjectileLifespan: 1.33
   ProjectileSpeed: 15
@@ -157,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charges: 30
+  CastSound: {fileID: 8300000, guid: 3ff1cd90315e17040ad15625ec6fba9c, type: 3}
   PowerDuration: 5
   PowerColor: {r: 0.5764706, g: 0.30588236, b: 0, a: 1}
 --- !u!114 &718498033319844910
@@ -172,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charges: 30
+  CastSound: {fileID: 0}
 --- !u!50 &8360485028202307014
 Rigidbody2D:
   serializedVersion: 4
