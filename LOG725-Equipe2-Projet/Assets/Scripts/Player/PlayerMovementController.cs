@@ -35,7 +35,7 @@ public class PlayerMovementController : MonoBehaviour
         _rigidbody.gravityScale = DefaultGravity;
 
         JumpPerformedCallback = (callbackContext) => OnJumpPressed();
-        JumpCanceledCallback = (callbackContext) => OnJumpPressed();
+        JumpCanceledCallback = (callbackContext) => OnJumpReleased();
     }
 
     private void OnEnable()
