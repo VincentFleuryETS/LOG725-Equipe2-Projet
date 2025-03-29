@@ -731,17 +731,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &590409906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3029013067554505427, guid: 589b300bcc52fc34ab816c86a86b9c34, type: 3}
-  m_PrefabInstance: {fileID: 1061354954}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &615175736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,152 +963,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1004653455 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3353030954531524549, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
-  m_PrefabInstance: {fileID: 6752852292901767696}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1004653465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7699030490187611792, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
-  m_PrefabInstance: {fileID: 6752852292901767696}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004653455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6efca14b751af7429b9adefaa4cf6d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1004653466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004653455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004653465}
-        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
-        m_MethodName: OnMoveAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5bbf2785-1c59-4cba-84ae-7bda52f22d1a
-    m_ActionName: Player/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004653465}
-        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
-        m_MethodName: OnJumpAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: def4582c-1fec-4de0-a9a0-317b4c62890b
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004653465}
-        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
-        m_MethodName: OnAirAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 33115c9c-c105-4116-8815-75ca694a66c6
-    m_ActionName: Player/Air[/Keyboard/v]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004653465}
-        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
-        m_MethodName: OnWaterAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: bcc84f82-5507-41f9-a193-7a53fdeb0ef6
-    m_ActionName: Player/Water[/Keyboard/c]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004653465}
-        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
-        m_MethodName: OnEarthAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: fc47801a-2384-4fb7-9fa0-d01902f28d35
-    m_ActionName: Player/Earth[/Keyboard/x]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1004653465}
-        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
-        m_MethodName: OnFireAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3de15b0a-4a6c-4713-9862-6d51fefa18c6
-    m_ActionName: Player/Fire[/Keyboard/z]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 763d233d-ba55-457d-972e-c82c7e85d952
-    m_ActionName: UI/New action
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1001 &1061354954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1139,7 +982,7 @@ PrefabInstance:
     - target: {fileID: 438144964457657053, guid: 589b300bcc52fc34ab816c86a86b9c34, type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 590409906}
+      objectReference: {fileID: 2032644250}
     - target: {fileID: 438144964457657053, guid: 589b300bcc52fc34ab816c86a86b9c34, type: 3}
       propertyPath: m_RebindOverlay
       value: 
@@ -4656,6 +4499,10 @@ PrefabInstance:
       propertyPath: CastSound
       value: 
       objectReference: {fileID: 8300000, guid: 3ff1cd90315e17040ad15625ec6fba9c, type: 3}
+    - target: {fileID: 7699030490187611792, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
+      propertyPath: PlayerControlsAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
     - target: {fileID: 9113329397140873568, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
       propertyPath: CastSound
       value: 
@@ -4663,10 +4510,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3353030954531524549, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1004653466}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
