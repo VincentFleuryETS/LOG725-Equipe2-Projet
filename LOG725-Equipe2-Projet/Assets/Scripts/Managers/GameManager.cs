@@ -30,6 +30,13 @@ public class GameManager : MonoBehaviour
         ResumeGame();
     }
 
+    public static void OpenLevelByName(string levelName)
+    {
+        Debug.Log("GameManager: Load Level " + levelName);
+        SceneManager.LoadScene(levelName);
+        ResumeGame();
+    }
+
     public static void RestartCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
