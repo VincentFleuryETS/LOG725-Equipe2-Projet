@@ -258,12 +258,20 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         {
             m_RebindOperation?.Cancel(); // Will null out m_RebindOperation.
 
+            bool actionWasEnabled = action.enabled;
+
             void CleanUp()
             {
                 m_RebindOperation?.Dispose();
                 m_RebindOperation = null;
-                action.Enable();
+
+                // Only re-Enable the action if it was enabled to begin with.
+                if (actionWasEnabled)
+                {
+                    action.Enable();
+                }
             }
+
 
             //Fixes the "InvalidOperationException: Cannot rebind action x while it is enabled" error
             action.Disable();

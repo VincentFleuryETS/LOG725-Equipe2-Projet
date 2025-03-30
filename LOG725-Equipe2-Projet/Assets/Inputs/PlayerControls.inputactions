@@ -6,7 +6,7 @@
             "id": "fbcb7b09-9cc4-4f51-a8e8-c5acc36edd3a",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Mouvement",
                     "type": "Value",
                     "id": "5bbf2785-1c59-4cba-84ae-7bda52f22d1a",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
+                    "name": "Saut",
                     "type": "Button",
                     "id": "def4582c-1fec-4de0-a9a0-317b4c62890b",
                     "expectedControlType": "",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Air",
+                    "name": "Pouvoir Air",
                     "type": "Button",
                     "id": "33115c9c-c105-4116-8815-75ca694a66c6",
                     "expectedControlType": "",
@@ -33,16 +33,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Water",
+                    "name": "Pouvoir Eau",
                     "type": "Button",
                     "id": "bcc84f82-5507-41f9-a193-7a53fdeb0ef6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "Earth",
+                    "name": "Pouvoir Terre",
                     "type": "Button",
                     "id": "fc47801a-2384-4fb7-9fa0-d01902f28d35",
                     "expectedControlType": "",
@@ -51,9 +51,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fire",
+                    "name": "Pouvoir Feu",
                     "type": "Button",
                     "id": "3de15b0a-4a6c-4713-9862-6d51fefa18c6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Recommencer",
+                    "type": "Button",
+                    "id": "12a4eb75-2293-460b-8dc1-7c6a1ffceb89",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "c7cb0fe5-1ba1-4f39-9d00-1c6e705ff503",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -67,8 +85,8 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Jump",
+                    "groups": ";Keyboard",
+                    "action": "Saut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -79,7 +97,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Mouvement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -89,8 +107,8 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": ";Keyboard",
+                    "action": "Mouvement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -100,8 +118,8 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": ";Keyboard",
+                    "action": "Mouvement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -111,8 +129,8 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": ";Keyboard",
+                    "action": "Mouvement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -122,8 +140,8 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": ";Keyboard",
+                    "action": "Mouvement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -133,8 +151,8 @@
                     "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Air",
+                    "groups": ";Keyboard",
+                    "action": "Pouvoir Air",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -144,8 +162,8 @@
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Water",
+                    "groups": ";Keyboard",
+                    "action": "Pouvoir Eau",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -155,8 +173,8 @@
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Earth",
+                    "groups": ";Keyboard",
+                    "action": "Pouvoir Terre",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -166,8 +184,30 @@
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Fire",
+                    "groups": ";Keyboard",
+                    "action": "Pouvoir Feu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e22d5e5c-951d-4688-947b-0bdc11d7551a",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Recommencer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c6ed63b-3c79-4ef1-af38-073b39370af0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -178,7 +218,7 @@
             "id": "702e9dff-d8d7-4893-bb53-178c2e995df4",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Sortir",
                     "type": "Button",
                     "id": "763d233d-ba55-457d-972e-c82c7e85d952",
                     "expectedControlType": "",
@@ -191,16 +231,28 @@
                 {
                     "name": "",
                     "id": "226277ab-ab9d-461e-83f2-d9fc57bb7a24",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": ";Keyboard",
+                    "action": "Sortir",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

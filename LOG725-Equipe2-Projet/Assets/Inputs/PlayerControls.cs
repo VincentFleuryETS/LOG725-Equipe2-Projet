@@ -28,7 +28,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""fbcb7b09-9cc4-4f51-a8e8-c5acc36edd3a"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Mouvement"",
                     ""type"": ""Value"",
                     ""id"": ""5bbf2785-1c59-4cba-84ae-7bda52f22d1a"",
                     ""expectedControlType"": ""Vector2"",
@@ -37,7 +37,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Saut"",
                     ""type"": ""Button"",
                     ""id"": ""def4582c-1fec-4de0-a9a0-317b4c62890b"",
                     ""expectedControlType"": """",
@@ -46,7 +46,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Air"",
+                    ""name"": ""Pouvoir Air"",
                     ""type"": ""Button"",
                     ""id"": ""33115c9c-c105-4116-8815-75ca694a66c6"",
                     ""expectedControlType"": """",
@@ -55,16 +55,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Water"",
+                    ""name"": ""Pouvoir Eau"",
                     ""type"": ""Button"",
                     ""id"": ""bcc84f82-5507-41f9-a193-7a53fdeb0ef6"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Earth"",
+                    ""name"": ""Pouvoir Terre"",
                     ""type"": ""Button"",
                     ""id"": ""fc47801a-2384-4fb7-9fa0-d01902f28d35"",
                     ""expectedControlType"": """",
@@ -73,9 +73,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""Pouvoir Feu"",
                     ""type"": ""Button"",
                     ""id"": ""3de15b0a-4a6c-4713-9862-6d51fefa18c6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recommencer"",
+                    ""type"": ""Button"",
+                    ""id"": ""12a4eb75-2293-460b-8dc1-7c6a1ffceb89"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7cb0fe5-1ba1-4f39-9d00-1c6e705ff503"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -89,8 +107,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Saut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -101,7 +119,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Mouvement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -111,8 +129,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Mouvement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -122,8 +140,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Mouvement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -133,8 +151,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Mouvement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -144,8 +162,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Mouvement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -155,8 +173,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/v"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Air"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Pouvoir Air"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -166,8 +184,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Water"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Pouvoir Eau"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -177,8 +195,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Earth"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Pouvoir Terre"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -188,8 +206,30 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Pouvoir Feu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e22d5e5c-951d-4688-947b-0bdc11d7551a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Recommencer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c6ed63b-3c79-4ef1-af38-073b39370af0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -200,7 +240,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""702e9dff-d8d7-4893-bb53-178c2e995df4"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Sortir"",
                     ""type"": ""Button"",
                     ""id"": ""763d233d-ba55-457d-972e-c82c7e85d952"",
                     ""expectedControlType"": """",
@@ -213,30 +253,44 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""226277ab-ab9d-461e-83f2-d9fc57bb7a24"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Sortir"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Air = m_Player.FindAction("Air", throwIfNotFound: true);
-        m_Player_Water = m_Player.FindAction("Water", throwIfNotFound: true);
-        m_Player_Earth = m_Player.FindAction("Earth", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Mouvement = m_Player.FindAction("Mouvement", throwIfNotFound: true);
+        m_Player_Saut = m_Player.FindAction("Saut", throwIfNotFound: true);
+        m_Player_PouvoirAir = m_Player.FindAction("Pouvoir Air", throwIfNotFound: true);
+        m_Player_PouvoirEau = m_Player.FindAction("Pouvoir Eau", throwIfNotFound: true);
+        m_Player_PouvoirTerre = m_Player.FindAction("Pouvoir Terre", throwIfNotFound: true);
+        m_Player_PouvoirFeu = m_Player.FindAction("Pouvoir Feu", throwIfNotFound: true);
+        m_Player_Recommencer = m_Player.FindAction("Recommencer", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_UI_Sortir = m_UI.FindAction("Sortir", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -304,22 +358,26 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Air;
-    private readonly InputAction m_Player_Water;
-    private readonly InputAction m_Player_Earth;
-    private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Mouvement;
+    private readonly InputAction m_Player_Saut;
+    private readonly InputAction m_Player_PouvoirAir;
+    private readonly InputAction m_Player_PouvoirEau;
+    private readonly InputAction m_Player_PouvoirTerre;
+    private readonly InputAction m_Player_PouvoirFeu;
+    private readonly InputAction m_Player_Recommencer;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Air => m_Wrapper.m_Player_Air;
-        public InputAction @Water => m_Wrapper.m_Player_Water;
-        public InputAction @Earth => m_Wrapper.m_Player_Earth;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Mouvement => m_Wrapper.m_Player_Mouvement;
+        public InputAction @Saut => m_Wrapper.m_Player_Saut;
+        public InputAction @PouvoirAir => m_Wrapper.m_Player_PouvoirAir;
+        public InputAction @PouvoirEau => m_Wrapper.m_Player_PouvoirEau;
+        public InputAction @PouvoirTerre => m_Wrapper.m_Player_PouvoirTerre;
+        public InputAction @PouvoirFeu => m_Wrapper.m_Player_PouvoirFeu;
+        public InputAction @Recommencer => m_Wrapper.m_Player_Recommencer;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -329,46 +387,58 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Air.started += instance.OnAir;
-            @Air.performed += instance.OnAir;
-            @Air.canceled += instance.OnAir;
-            @Water.started += instance.OnWater;
-            @Water.performed += instance.OnWater;
-            @Water.canceled += instance.OnWater;
-            @Earth.started += instance.OnEarth;
-            @Earth.performed += instance.OnEarth;
-            @Earth.canceled += instance.OnEarth;
-            @Fire.started += instance.OnFire;
-            @Fire.performed += instance.OnFire;
-            @Fire.canceled += instance.OnFire;
+            @Mouvement.started += instance.OnMouvement;
+            @Mouvement.performed += instance.OnMouvement;
+            @Mouvement.canceled += instance.OnMouvement;
+            @Saut.started += instance.OnSaut;
+            @Saut.performed += instance.OnSaut;
+            @Saut.canceled += instance.OnSaut;
+            @PouvoirAir.started += instance.OnPouvoirAir;
+            @PouvoirAir.performed += instance.OnPouvoirAir;
+            @PouvoirAir.canceled += instance.OnPouvoirAir;
+            @PouvoirEau.started += instance.OnPouvoirEau;
+            @PouvoirEau.performed += instance.OnPouvoirEau;
+            @PouvoirEau.canceled += instance.OnPouvoirEau;
+            @PouvoirTerre.started += instance.OnPouvoirTerre;
+            @PouvoirTerre.performed += instance.OnPouvoirTerre;
+            @PouvoirTerre.canceled += instance.OnPouvoirTerre;
+            @PouvoirFeu.started += instance.OnPouvoirFeu;
+            @PouvoirFeu.performed += instance.OnPouvoirFeu;
+            @PouvoirFeu.canceled += instance.OnPouvoirFeu;
+            @Recommencer.started += instance.OnRecommencer;
+            @Recommencer.performed += instance.OnRecommencer;
+            @Recommencer.canceled += instance.OnRecommencer;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Air.started -= instance.OnAir;
-            @Air.performed -= instance.OnAir;
-            @Air.canceled -= instance.OnAir;
-            @Water.started -= instance.OnWater;
-            @Water.performed -= instance.OnWater;
-            @Water.canceled -= instance.OnWater;
-            @Earth.started -= instance.OnEarth;
-            @Earth.performed -= instance.OnEarth;
-            @Earth.canceled -= instance.OnEarth;
-            @Fire.started -= instance.OnFire;
-            @Fire.performed -= instance.OnFire;
-            @Fire.canceled -= instance.OnFire;
+            @Mouvement.started -= instance.OnMouvement;
+            @Mouvement.performed -= instance.OnMouvement;
+            @Mouvement.canceled -= instance.OnMouvement;
+            @Saut.started -= instance.OnSaut;
+            @Saut.performed -= instance.OnSaut;
+            @Saut.canceled -= instance.OnSaut;
+            @PouvoirAir.started -= instance.OnPouvoirAir;
+            @PouvoirAir.performed -= instance.OnPouvoirAir;
+            @PouvoirAir.canceled -= instance.OnPouvoirAir;
+            @PouvoirEau.started -= instance.OnPouvoirEau;
+            @PouvoirEau.performed -= instance.OnPouvoirEau;
+            @PouvoirEau.canceled -= instance.OnPouvoirEau;
+            @PouvoirTerre.started -= instance.OnPouvoirTerre;
+            @PouvoirTerre.performed -= instance.OnPouvoirTerre;
+            @PouvoirTerre.canceled -= instance.OnPouvoirTerre;
+            @PouvoirFeu.started -= instance.OnPouvoirFeu;
+            @PouvoirFeu.performed -= instance.OnPouvoirFeu;
+            @PouvoirFeu.canceled -= instance.OnPouvoirFeu;
+            @Recommencer.started -= instance.OnRecommencer;
+            @Recommencer.performed -= instance.OnRecommencer;
+            @Recommencer.canceled -= instance.OnRecommencer;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -390,12 +460,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_Newaction;
+    private readonly InputAction m_UI_Sortir;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
         public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+        public InputAction @Sortir => m_Wrapper.m_UI_Sortir;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -405,16 +475,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Sortir.started += instance.OnSortir;
+            @Sortir.performed += instance.OnSortir;
+            @Sortir.canceled += instance.OnSortir;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Sortir.started -= instance.OnSortir;
+            @Sortir.performed -= instance.OnSortir;
+            @Sortir.canceled -= instance.OnSortir;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -432,17 +502,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
     public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnAir(InputAction.CallbackContext context);
-        void OnWater(InputAction.CallbackContext context);
-        void OnEarth(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
+        void OnMouvement(InputAction.CallbackContext context);
+        void OnSaut(InputAction.CallbackContext context);
+        void OnPouvoirAir(InputAction.CallbackContext context);
+        void OnPouvoirEau(InputAction.CallbackContext context);
+        void OnPouvoirTerre(InputAction.CallbackContext context);
+        void OnPouvoirFeu(InputAction.CallbackContext context);
+        void OnRecommencer(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnSortir(InputAction.CallbackContext context);
     }
 }
