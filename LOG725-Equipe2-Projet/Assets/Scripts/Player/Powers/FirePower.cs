@@ -5,11 +5,11 @@ public class FirePower : Power
     [SerializeField]
     private PowerProjectile FireProjectile;
     [SerializeField]
-    private float ProjectileLifespan = 1.5f;
+    private float ProjectileLifespan = 0.7f;
     [SerializeField]
-    private float ProjectileSpeed = 10.0f;
+    private float ProjectileSpeed = 20.0f;
     [SerializeField]
-    private float SlowdownDuration = 0.5f; // Durée du ralentissement
+    private float SlowdownDuration = 0.7f; // Durée du ralentissement
 
     public override void Cast(Vector2 direction)
     {
