@@ -1233,6 +1233,7 @@ Transform:
   m_Children:
   - {fileID: 2134875441}
   - {fileID: 1942285512}
+  - {fileID: 1378388757}
   m_Father: {fileID: 1767157196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1182050749
@@ -1659,12 +1660,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378388753}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -21.32, y: -4.56, z: 9.835374}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1182050748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1422339510 stripped
 Transform:
@@ -4033,6 +4034,27 @@ MonoBehaviour:
   earthIcon: {fileID: 1164103209}
   earthChargesText: {fileID: 1949314546}
   powerController: {fileID: 1925463582}
+--- !u!95 &1925463586
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925463574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 429b8748dd225444a824b2513946b1d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1927750477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4779,6 +4801,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3353030954531524549, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1925463585}
+    - targetCorrespondingSourceObject: {fileID: 3353030954531524549, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1925463586}
   m_SourcePrefab: {fileID: 100100000, guid: fff90c3b8e71e6543ac2809545430e77, type: 3}
 --- !u!114 &6799019429208792966
 MonoBehaviour:
@@ -5154,4 +5179,3 @@ SceneRoots:
   - {fileID: 5930332811545657700}
   - {fileID: 1965682056}
   - {fileID: 6752852292901767696}
-  - {fileID: 1378388757}

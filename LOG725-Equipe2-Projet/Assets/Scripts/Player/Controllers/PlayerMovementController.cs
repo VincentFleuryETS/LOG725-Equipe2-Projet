@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(Animator))] // Ajoute l'Animator comme composant requis
 public class PlayerMovementController : MonoBehaviour
 {
     [Header("----- Movement Parameters -----")]
@@ -16,18 +16,19 @@ public class PlayerMovementController : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private CapsuleCollider2D _collider;
+    private Animator _animator; // Référence à l'Animator
     private bool facingRight = true;
     private Vector2 _moveInput = Vector2.zero;
     private Vector2 _movement = Vector2.zero;
     private bool isJumping = false;
     private bool isClimbing = false;
     private bool velocityIsLocked = false;
-    
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
+        _animator = GetComponent<Animator>(); // Récupère l'Animator
         _rigidbody.gravityScale = DefaultGravity;
     }
 
@@ -44,7 +45,7 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isClimbing = true;
-            //Debug.Log("Entered ladder");
+            _animator.SetBool("IsClimbing", true); // Active l'animation de grimper
         }
     }
 
@@ -53,15 +54,13 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isClimbing = false;
-            //Debug.Log("Exited ladder");
+            _animator.SetBool("IsClimbing", false); // Désactive l'animation de grimper
         }
     }
 
     void Update()
     {
-
         _movement.x = _moveInput.x * WalkSpeed;
-
 
         if (isClimbing)
         {
@@ -70,7 +69,7 @@ public class PlayerMovementController : MonoBehaviour
         }
         else
         {
-            //If not climbing or jumping, cut the vertical positive velocity.
+            // Si pas en train de grimper ou de sauter, coupe la vélocité verticale positive
             if (!isJumping && _rigidbody.velocity.y > 0)
             {
                 _movement.y = _rigidbody.velocity.y / 1.2f;
@@ -82,7 +81,10 @@ public class PlayerMovementController : MonoBehaviour
             _rigidbody.gravityScale = DefaultGravity;
         }
 
+        // Met à jour le paramètre Speed pour l'animation
+        _animator.SetFloat("Speed", Mathf.Abs(_moveInput.x));
 
+        // Gestion de l'orientation du sprite
         if (!isClimbing && _moveInput.x > 0 && !facingRight)
         {
             Flip();
@@ -96,7 +98,6 @@ public class PlayerMovementController : MonoBehaviour
     private bool IsGrounded()
     {
         bool grounded = Physics2D.CircleCast(transform.position, _collider.size.y / 2, Vector2.down, 1f);
-        //Debug.Log($"Is Grounded: {grounded}");
         return grounded;
     }
 
@@ -130,9 +131,11 @@ public class PlayerMovementController : MonoBehaviour
             AddForce(Vector2.up * JumpStrength, ForceMode2D.Impulse, false);
             isJumping = true;
         }
-        else if (isClimbing) {
+        else if (isClimbing)
+        {
             AddForce(Vector2.up * JumpStrength, ForceMode2D.Impulse, false);
             isClimbing = false;
+            _animator.SetBool("IsClimbing", false); // Désactive l'animation de grimper
             isJumping = true;
         }
     }
@@ -155,11 +158,6 @@ public class PlayerMovementController : MonoBehaviour
         _rigidbody.AddForce(force, forceMode);
     }
 
-    /// <summary>
-    /// Lock the velocity of the entity to the value of <paramref name="velocity"/> for <paramref name="timeLocked"/> seconds.
-    /// </summary>
-    /// <param name="velocity"></param>
-    /// <param name="timeLocked"></param>
     public void LockVelocity(Vector2 velocity, float timeLocked)
     {
         velocityIsLocked = true;
@@ -168,12 +166,9 @@ public class PlayerMovementController : MonoBehaviour
         Invoke(nameof(UnlockVelocity), timeLocked);
     }
 
-    /// <summary>
-    /// Unlock the velocity of the entity.
-    /// </summary>
     public void UnlockVelocity()
     {
-        if(_rigidbody != null)
+        if (_rigidbody != null)
         {
             _rigidbody.gravityScale = DefaultGravity;
             velocityIsLocked = false;
@@ -184,6 +179,4 @@ public class PlayerMovementController : MonoBehaviour
     {
         Physics2D.IgnoreCollision(_collider, otherCollider);
     }
-
-    
 }
