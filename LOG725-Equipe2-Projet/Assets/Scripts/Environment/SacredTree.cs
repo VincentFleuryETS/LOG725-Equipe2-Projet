@@ -14,7 +14,8 @@ public enum TreeState
 public class SacredTree : MonoBehaviour
 {
     [SerializeField]
-    private TreeState CurrentState = TreeState.Corrupted;
+    public TreeState CurrentState = TreeState.Corrupted; // Changé en public
+
     [Header("----- Color Settings -----")]
     [SerializeField]
     private Color CorruptedColor;
@@ -29,15 +30,11 @@ public class SacredTree : MonoBehaviour
     [SerializeField]
     private AudioClip AbsorbSound;
 
-
-
     private SpriteRenderer _renderer;
 
-    // Start is called before the first frame update
     void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
-
         ChangeState(CurrentState);
     }
 
@@ -68,7 +65,6 @@ public class SacredTree : MonoBehaviour
                 }
                 break;
             case TreeState.Purified:
-
                 if (collision.TryGetComponent(out Ghost ghost))
                 {
                     Debug.Log("Sacred Tree absorbed Ghost.");
