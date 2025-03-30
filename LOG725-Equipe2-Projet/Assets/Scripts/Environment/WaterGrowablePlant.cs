@@ -73,12 +73,13 @@ public class WaterGrowablePlant : MonoBehaviour
         {
             GameObject segment = new GameObject($"VineSegment_{i}");
             segment.transform.parent = vine.transform;
-            segment.transform.localPosition = new Vector3(0, i * segmentHeight, 0); // Positionne chaque segment au-dessus du précédent
+            segment.transform.localPosition = new Vector3(0, 0.1f + i * segmentHeight, 0); // Positionne chaque segment au-dessus du précédent
 
             // Ajoute un SpriteRenderer pour le segment
             SpriteRenderer renderer = segment.AddComponent<SpriteRenderer>();
             renderer.sprite = vineSegmentSprite;
             renderer.sortingLayerName = "Interactable"; // Définit le Sorting Layer sur "Interactable"
         }
+        Destroy(gameObject);
     }
 }

@@ -4,7 +4,12 @@ using TMPro;
 
 public class PowerBarUI : MonoBehaviour
 {
+    // Référence au PlayerPowerController
+    [Header("----- Player References -----")]
+    [SerializeField] private PlayerPowerController powerController;
+
     // Références aux icônes et textes dans l'UI
+    [Header("----- UI References -----")]
     [SerializeField] private Image waterIcon;
     [SerializeField] private TextMeshProUGUI waterChargesText;
     [SerializeField] private Image airIcon;
@@ -14,8 +19,7 @@ public class PowerBarUI : MonoBehaviour
     [SerializeField] private Image earthIcon;
     [SerializeField] private TextMeshProUGUI earthChargesText;
 
-    // Référence au PlayerPowerController
-    [SerializeField] private PlayerPowerController powerController;
+    
 
     // Couleurs pour les icônes (débloqué = couleur, bloqué = noir)
     private Color unlockedColor = Color.white;
