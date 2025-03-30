@@ -118,4 +118,12 @@ public class Ghost : MonoBehaviour
         Gizmos.color = isHostile ? Color.red : Color.green;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            player.KillPlayer();
+        }
+    }
 }

@@ -4919,6 +4919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3946122c68b94c41bec378623bcc7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerController: {fileID: 1925463582}
   waterIcon: {fileID: 1035936511}
   waterChargesText: {fileID: 527127578}
   airIcon: {fileID: 1984184868}
@@ -4927,7 +4928,6 @@ MonoBehaviour:
   fireChargesText: {fileID: 1890795182}
   earthIcon: {fileID: 1164103209}
   earthChargesText: {fileID: 1949314546}
-  powerController: {fileID: 1925463582}
 --- !u!95 &1925463586
 Animator:
   serializedVersion: 5
@@ -6065,6 +6065,7 @@ SceneRoots:
   - {fileID: 1840627066}
   - {fileID: 2109781087}
   - {fileID: 8079437516269013674}
+  - {fileID: 966862665}
   - {fileID: 1763035685}
   - {fileID: 1667004067}
   - {fileID: 8545603227384773640}
@@ -6074,5 +6075,4 @@ SceneRoots:
   - {fileID: 5930332811545657700}
   - {fileID: 1965682056}
   - {fileID: 6752852292901767696}
-  - {fileID: 966862665}
   - {fileID: 1725535666}

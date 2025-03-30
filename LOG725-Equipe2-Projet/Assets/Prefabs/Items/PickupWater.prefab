@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerType: 1
   amount: 1
+  PickupSound: {fileID: 8300000, guid: 7ce4bc03beac4894ea2424bcfb44e11d, type: 3}
 --- !u!61 &8790198733693286691
 BoxCollider2D:
   m_ObjectHideFlags: 0
