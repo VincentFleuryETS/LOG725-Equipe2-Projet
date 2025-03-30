@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4574060631075457309}
+  - component: {fileID: 5380510963626239791}
   - component: {fileID: 7699030490187611792}
   - component: {fileID: 6923021092114754814}
   - component: {fileID: 6116191757065425935}
@@ -20,7 +21,6 @@ GameObject:
   - component: {fileID: 1350228558480289325}
   - component: {fileID: 2182483413867615608}
   - component: {fileID: 5030212710636417296}
-  - component: {fileID: 1698152427464802301}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -43,6 +43,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5380510963626239791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353030954531524549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad8ed97869155a43b6cff797174a16c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathSound: {fileID: 8300000, guid: 114eaef4c9be3194ea83f50b28961d68, type: 3}
 --- !u!114 &7699030490187611792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,24 +305,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1698152427464802301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3353030954531524549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3946122c68b94c41bec378623bcc7c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterIcon: {fileID: 0}
-  waterChargesText: {fileID: 0}
-  airIcon: {fileID: 0}
-  airChargesText: {fileID: 0}
-  fireIcon: {fileID: 0}
-  fireChargesText: {fileID: 0}
-  earthIcon: {fileID: 0}
-  earthChargesText: {fileID: 0}
-  powerController: {fileID: 6116191757065425935}

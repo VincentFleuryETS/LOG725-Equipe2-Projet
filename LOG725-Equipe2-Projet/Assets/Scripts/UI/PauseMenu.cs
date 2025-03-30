@@ -119,7 +119,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OnExitButtonPressed()
     {
-        //Insert transition to Title Screen
+        GameManager.OpenLevelByName("MainMenuScene");
     }
 
     #endregion
