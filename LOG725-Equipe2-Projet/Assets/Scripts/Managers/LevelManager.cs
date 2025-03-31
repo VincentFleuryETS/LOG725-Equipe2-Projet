@@ -1,28 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    public int currentLevel; // À définir dans l’inspecteur pour chaque scène
-    [SerializeField] private GameObject levelCompletePanel; // Référence au panneau UI
+    [Header("----- Parameters -----")]
+    [SerializeField] public int CurrentLevel; // À définir dans l’inspecteur pour chaque scène
+
+    [Header("----- Events -----")]
+    public UnityEvent LevelCompleteEvent;
+    public bool LevelCompleted = false; // Pour éviter plusieurs déclenchements
 
     private List<SacredTree> treeList = new List<SacredTree>();
     private List<Ghost> ghostList = new List<Ghost>();
-    private bool levelCompleted = false; // Pour éviter plusieurs déclenchements
 
-    void Start()
-    {
-        // Assurer que le panneau est caché au démarrage
-        if (levelCompletePanel != null)
-        {
-            levelCompletePanel.SetActive(false);
-        }
-    }
 
     void Update()
     {
-        if (levelCompleted) return; // Ne pas vérifier si le niveau est déjà terminé
+        if (LevelCompleted) return; // Ne pas vérifier si le niveau est déjà terminé
 
         // Réinitialiser les listes
         treeList.Clear();
@@ -57,62 +53,37 @@ public class LevelManager : MonoBehaviour
         // Vérifier si tous les arbres sont Purified ou AbsorbedSpirit
         foreach (SacredTree tree in treeList)
         {
-            if (tree.CurrentState != TreeState.Purified &&
-                tree.CurrentState != TreeState.AbsorbedSpirit)
+            if (tree.CurrentState == TreeState.Corrupted)
             {
                 return; // Un arbre est encore Corrupted, pas de victoire
             }
         }
 
-        // Si on arrive ici, toutes les conditions sont remplies
-        ShowLevelCompleteScreen();
+        // Si on arrive ici, toutes les conditions sont remplies, niveau gagné.
+        LevelComplete();
     }
 
-    private void ShowLevelCompleteScreen()
+    private void LevelComplete()
     {
-        levelCompleted = true; // Marquer le niveau comme terminé
-        if (levelCompletePanel != null)
+        LevelCompleted = true;
+        LevelCompleteEvent.Invoke();
+        int nextLevel = CurrentLevel + 1;
+        if (nextLevel > PlayerPrefs.GetInt("MaxLevelReached", 1) && GameManager.CheckIfLevelExistsByName("Level" + nextLevel))
         {
-            levelCompletePanel.SetActive(true); // Afficher le panneau
-            Time.timeScale = 0f; // Optionnel : mettre le jeu en pause
+            PlayerPrefs.SetInt("MaxLevelReached", CurrentLevel + 1);
+            PlayerPrefs.Save();
         }
     }
 
     // Méthode appelée par le bouton "Niveau Suivant"
     public void GoToNextLevel()
     {
-        int nextLevel = currentLevel + 1;
-        if (nextLevel > PlayerPrefs.GetInt("MaxLevelReached", 1))
+        int nextLevel = CurrentLevel + 1;
+        if (GameManager.CheckIfLevelExistsByName("Level" + nextLevel))
         {
-            PlayerPrefs.SetInt("MaxLevelReached", nextLevel);
-            PlayerPrefs.Save();
-        }
-
-        Time.timeScale = 1f; // Reprendre le temps si mis en pause
-        if (SceneExists("Level" + nextLevel))
-        {
-            SceneManager.LoadScene("Level" + nextLevel);
-        }
-        else
-        {
-            SceneManager.LoadScene("MainMenuScene");
+            GameManager.OpenLevelByName("Level" + nextLevel);
         }
     }
 
-    // Méthode appelée par le bouton "Menu Principal"
-    public void GoToMainMenu()
-    {
-        Time.timeScale = 1f; // Reprendre le temps si mis en pause
-        SceneManager.LoadScene("MainMenuScene");
-    }
-
-    private bool SceneExists(string sceneName)
-    {
-        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-        {
-            string path = SceneUtility.GetScenePathByBuildIndex(i);
-            if (path.Contains(sceneName)) return true;
-        }
-        return false;
-    }
+    
 }

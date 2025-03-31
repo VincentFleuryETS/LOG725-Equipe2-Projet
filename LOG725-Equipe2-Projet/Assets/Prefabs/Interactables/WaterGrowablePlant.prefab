@@ -146,4 +146,4 @@ MonoBehaviour:
   vineSegmentSprite: {fileID: 21300120, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
   numberOfSegments: 7
   segmentHeight: 1
-  growSound: {fileID: 0}
+  growSound: {fileID: 8300000, guid: 500a4c6331254884293819d82aa07edc, type: 3}

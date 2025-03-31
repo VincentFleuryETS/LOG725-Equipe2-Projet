@@ -6,6 +6,6 @@ public class LevelSelectMenu : MonoBehaviour
 {
     public void ReturnToMainMenu()
     {
-        GameManager.OpenLevelByName("MainMenuScene");
+        GameManager.OpenMainMenuScene();
     }
 }

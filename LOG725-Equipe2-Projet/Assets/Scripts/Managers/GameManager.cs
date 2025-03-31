@@ -27,24 +27,40 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager: Load Level " + level);
         SceneManager.LoadScene(level);
-        ResumeGame();
+        InputManager.SetActionMap(InputManager.Player);
+        UnpauseGame();
     }
 
     public static void OpenLevelByName(string levelName)
     {
         Debug.Log("GameManager: Load Level " + levelName);
         SceneManager.LoadScene(levelName);
-        ResumeGame();
+        InputManager.SetActionMap(InputManager.Player);
+        UnpauseGame();
+    }
+
+    public static void OpenMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+        InputManager.SetActionMap(InputManager.UI);
+    }
+
+    public static void OpenLevelSelectScene()
+    {
+        SceneManager.LoadScene("LevelSelect");
+        InputManager.SetActionMap(InputManager.UI);
+    }
+
+    public static bool CheckIfLevelExistsByName(string levelName)
+    {
+        int buildIndex = SceneUtility.GetBuildIndexByScenePath(levelName);
+        return buildIndex >= 0;
     }
 
     public static void RestartCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public static void LevelWon()
-    {
-        PauseGame();
+        UnpauseGame();
     }
 
     public static void CloseGame()
@@ -59,7 +75,7 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
-    public static void ResumeGame()
+    public static void UnpauseGame()
     {
         Time.timeScale = 1;
     }

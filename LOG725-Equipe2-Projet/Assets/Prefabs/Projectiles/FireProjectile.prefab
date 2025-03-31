@@ -172,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerType: 3
+  CollisionSound: {fileID: 8300000, guid: fd4a9b9431357ef479e73110087634f7, type: 3}

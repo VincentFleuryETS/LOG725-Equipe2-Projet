@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - PowerInput: {fileID: -4493232923873416529, guid: 57d27c1e3ac0e6549ac302b7a747731f, type: 3}
+  - CastSound: {fileID: 8300000, guid: f714ab77da661c3479d4d3dd10d3065e, type: 3}
+  - FireProjectile: {fileID: 6082370835530558856, guid: d7808669f9c227d4182a0a476c80a8a5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

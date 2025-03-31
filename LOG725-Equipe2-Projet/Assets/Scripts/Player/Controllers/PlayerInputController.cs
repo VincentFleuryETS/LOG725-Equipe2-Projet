@@ -59,7 +59,7 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnMoveAction(InputAction.CallbackContext context)
     {
-        if(context.performed || context.canceled)
+        if (context.performed || context.canceled)
         {
             _playerMovementController.SetMoveInput(context.ReadValue<Vector2>());
         }

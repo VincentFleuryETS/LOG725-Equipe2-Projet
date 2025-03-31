@@ -15,8 +15,6 @@ public class PauseMenu : MonoBehaviour
     {
         _mainPauseMenuCanvas.SetActive(false);
         _settingsMenuCanvas.SetActive(false);
-
-        SubscribeInputCallbacks();
     }
 
     private void OnEnable()
@@ -78,7 +76,7 @@ public class PauseMenu : MonoBehaviour
         CloseAllMenus();
 
         InputManager.SetActionMap(InputManager.Player);
-        GameManager.ResumeGame();
+        GameManager.UnpauseGame();
     }
 
     #endregion
@@ -119,7 +117,8 @@ public class PauseMenu : MonoBehaviour
 
     public void OnExitButtonPressed()
     {
-        GameManager.OpenLevelByName("MainMenuScene");
+        InputManager.SetActionMap(InputManager.Player);
+        GameManager.OpenMainMenuScene();
     }
 
     #endregion

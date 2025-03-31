@@ -128,11 +128,13 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (IsGrounded() && !isClimbing)
         {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             AddForce(Vector2.up * JumpStrength, ForceMode2D.Impulse, false);
             isJumping = true;
         }
         else if (isClimbing)
         {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             AddForce(Vector2.up * JumpStrength, ForceMode2D.Impulse, false);
             isClimbing = false;
             _animator.SetBool("IsClimbing", false); // Désactive l'animation de grimper
