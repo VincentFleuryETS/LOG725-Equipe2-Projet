@@ -8,6 +8,7 @@ using UnityEngine;
 public class EarthMovableObject : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
+    private bool _isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,20 +29,32 @@ public class EarthMovableObject : MonoBehaviour
 
     public void StartMoving()
     {
-        //_rigidbody.isKinematic = false;
+        _isMoving = true;
         _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void StopMoving()
     {
-        //_rigidbody.isKinematic = true;
+        _isMoving = false;
         _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out EarthPower earthPower))
+        if (!_isMoving && collision.gameObject.TryGetComponent(out EarthPower earthPower))
+        {
+            if (earthPower.IsPowerActive())
+            {
+                Debug.Log("Collision with EarthPower active!");
+                earthPower.AddMovableObject(this);
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if ( !_isMoving && collision.gameObject.TryGetComponent(out EarthPower earthPower) )
         {
             if (earthPower.IsPowerActive())
             {
