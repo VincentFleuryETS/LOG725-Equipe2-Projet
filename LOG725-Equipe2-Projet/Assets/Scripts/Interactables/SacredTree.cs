@@ -6,7 +6,7 @@ public enum TreeState
 {
     Corrupted,
     Purified,
-    AbsorbedSpirit
+    SpiritAbsorbed
 }
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -70,10 +70,10 @@ public class SacredTree : MonoBehaviour
                     Debug.Log("Sacred Tree absorbed Ghost.");
                     AudioManager.GetSingleton().PlaySFX(AbsorbSound);
                     Destroy(ghost.gameObject);
-                    ChangeState(TreeState.AbsorbedSpirit);
+                    ChangeState(TreeState.SpiritAbsorbed);
                 }
                 break;
-            case TreeState.AbsorbedSpirit:
+            case TreeState.SpiritAbsorbed:
                 break;
         }
     }
@@ -89,7 +89,7 @@ public class SacredTree : MonoBehaviour
             case TreeState.Purified:
                 _renderer.color = PurifiedColor;
                 break;
-            case TreeState.AbsorbedSpirit:
+            case TreeState.SpiritAbsorbed:
                 _renderer.color = AbsorbedSpiritColor;
                 break;
         }
