@@ -12,31 +12,19 @@ public class LevelManager : MonoBehaviour
     public UnityEvent LevelCompleteEvent;
     public bool LevelCompleted = false; // Pour éviter plusieurs déclenchements
 
-    private List<SacredTree> treeList = new List<SacredTree>();
-    private List<Ghost> ghostList = new List<Ghost>();
+    private SacredTree[] treeArray;
+    private Ghost[] ghostArray;
+
+    private void Start()
+    {
+        treeArray = FindObjectsOfType<SacredTree>();
+        ghostArray = FindObjectsOfType<Ghost>();
+    }
 
 
     void Update()
     {
         if (LevelCompleted) return; // Ne pas vérifier si le niveau est déjà terminé
-
-        // Réinitialiser les listes
-        treeList.Clear();
-        ghostList.Clear();
-
-        // Remplir la liste des arbres sacrés
-        SacredTree[] trees = FindObjectsOfType<SacredTree>();
-        foreach (SacredTree tree in trees)
-        {
-            treeList.Add(tree);
-        }
-
-        // Remplir la liste des fantômes
-        Ghost[] ghosts = FindObjectsOfType<Ghost>();
-        foreach (Ghost ghost in ghosts)
-        {
-            ghostList.Add(ghost);
-        }
 
         // Vérifier les conditions de victoire
         CheckWinCondition();
@@ -45,13 +33,15 @@ public class LevelManager : MonoBehaviour
     private void CheckWinCondition()
     {
         // Vérifier si la liste des fantômes est vide
-        if (ghostList.Count > 0)
-        {
-            return; // Il reste des fantômes, pas de victoire
+        foreach (Ghost ghost in ghostArray) { 
+            if(ghost != null)
+            {
+                return; // Il reste des fantômes, pas de victoire
+            }
         }
 
         // Vérifier si tous les arbres sont Purified ou AbsorbedSpirit
-        foreach (SacredTree tree in treeList)
+        foreach (SacredTree tree in treeArray)
         {
             if (tree.CurrentState == TreeState.Corrupted)
             {
