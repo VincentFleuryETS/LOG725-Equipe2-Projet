@@ -36,6 +36,10 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+
+            ToggleAudioType(AudioType.Music,    (PlayerPrefs.GetInt("MusicAudioMuted", 1) != 0));
+            ToggleAudioType(AudioType.SFX,      (PlayerPrefs.GetInt("SFXAudioMuted", 1) != 0));
+            ToggleAudioType(AudioType.UI,       (PlayerPrefs.GetInt("UIAudioMuted", 1) != 0));
         }
         else
         {
@@ -69,12 +73,15 @@ public class AudioManager : MonoBehaviour
         {
             case AudioType.Music:
                 musicSource.mute = !toggle;
+                PlayerPrefs.SetInt("MusicAudioMuted",(toggle ? 1 : 0));
                 break;
             case AudioType.SFX:
                 SFXSource.mute = !toggle;
+                PlayerPrefs.SetInt("SFXAudioMuted", (toggle ? 1 : 0));
                 break;
             case AudioType.UI:
                 UISource.mute = !toggle;
+                PlayerPrefs.SetInt("UIAudioMuted", (toggle ? 1 : 0));
                 break;
         }
     }
